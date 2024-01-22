@@ -2,26 +2,112 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
+*,
+html,
 body {
-  color: rgb(var(--foreground-rgb));
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.flex-center {
+  @apply flex items-center justify-center;
+}
+
+.flex-between {
+  @apply flex items-center justify-between;
+}
+
+.form-1 {
+  @apply outline-none border border-slate-300/50 focus:border-blue-500 placeholder:text-slate-700 bg-transparent transition-colors;
+}
+
+.shadow-image::before,
+.shadow-image::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  height: 2.5rem;
+}
+
+.shadow-image::before {
+  top: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent);
+}
+
+.shadow-image::after {
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.2), transparent);
+}
+
+.image-fade {
+  position: relative;
+  display: inline-block;
+}
+
+.image-fade::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 15rem;
+  background: linear-gradient(to bottom, transparent, #121212);
+}
+
+.image-container {
+  position: relative;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+}
+
+.image-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  padding: 10px;
+}
+
+.image-container:hover .image-info {
+  opacity: 1;
+}
+
+.full-star {
+  color: yellow;
+}
+
+.star-overlay {
+  white-space: nowrap;
+
+  color: yellow;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.text-gradient-1 {
+  background-color: #0093e9;
+  background-image: linear-gradient(23deg, #0093e9 0%, #80d0c7 55%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-footer {
+  background: rgb(18, 18, 18);
   background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    180deg,
+    rgba(18, 18, 18, 0.4564657) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
 }
