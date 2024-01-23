@@ -6,10 +6,18 @@
 //   },
 // };
 
+// const options = {
+//   method: "GET",
+//   headers: {
+//     "X-RapidAPI-Key": "0c6ed00467msh048b286376d4202p1eed16jsnc9846997a5b5",
+//     "X-RapidAPI-Host": "myanimelist.p.rapidapi.com",
+//   },
+// };
+
 const options = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": "0c6ed00467msh048b286376d4202p1eed16jsnc9846997a5b5",
+    "X-RapidAPI-Key": "ee3521f564msh6202e5fc5df0354p1b3741jsnca3874db850a",
     "X-RapidAPI-Host": "myanimelist.p.rapidapi.com",
   },
 };
@@ -86,4 +94,26 @@ export const fetchAnimes = async (query: string) => {
   }
 
   return response.json();
+};
+
+export const fetchSearch = async (query: string) => {
+  if (!query) {
+    throw new Error("error");
+  }
+
+  try {
+    const response = await fetch(
+      `https://myanimelist.p.rapidapi.com/v2/anime/search?q=${query}&n=50`,
+      options
+    );
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching data: ", error);
+    throw error;
+  }
 };

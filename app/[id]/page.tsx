@@ -1,3 +1,3 @@
-export default function Animes() {
-  return <div className="pt-20">animes</div>;
+export default function Anime() {
+  return <div className="pt-32">animes</div>;
 }

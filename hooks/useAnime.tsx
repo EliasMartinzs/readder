@@ -3,10 +3,11 @@ import {
   fetchAnimes,
   fetchMovies,
   fetchRecomendations,
+  fetchSearch,
   fetchSeasonal,
   fetchTVShows,
 } from "@/fetch";
-import { Anime, AnimeMovies, AnimeRecommendation } from "@/types";
+import { Anime, AnimeMovies, AnimeRecommendation, AnimeSearch } from "@/types";
 import { UseQueryResult, useQuery } from "react-query";
 
 export const useAnimeSeasonal = () => {
@@ -45,4 +46,12 @@ export const getAnimes = (
   query: string
 ): UseQueryResult<AnimeMovies[], Error> => {
   return useQuery(["getAnimes", query], () => fetchAnimes(query));
+};
+
+export const useSearchAnimes = (
+  query: string
+): UseQueryResult<AnimeSearch[], Error> => {
+  return useQuery(["searchAnimes", query], () => fetchSearch(query), {
+    enabled: !!query,
+  });
 };

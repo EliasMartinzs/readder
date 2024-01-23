@@ -9,6 +9,7 @@ import Popoover from "../reusable/Popoover";
 import { Logout } from "../reusable/Logout";
 import { SkeletonHeader } from "../skeletons/SkeletonHeader";
 import { Suspense } from "react";
+import { User2Icon } from "lucide-react";
 
 export async function Header() {
   const user = await auth();
@@ -52,7 +53,12 @@ export async function Header() {
                 </div>
               </Popoover>
             ) : (
-              <CiUser className="w-5 h-5 text-white" />
+              <Link
+                href="/auth/login"
+                className="font-semibold hover:underline underline-offset-4"
+              >
+                Login
+              </Link>
             )}
           </div>
         </nav>

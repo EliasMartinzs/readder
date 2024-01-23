@@ -63,3 +63,11 @@ export interface AnimeMovies {
   aired_on: string;
   members: number;
 }
+
+export interface AnimeSearch {
+  title: string;
+  description: string;
+  picture_url: string;
+  myanimelist_url: string;
+  myanimelist_id: number;
+}

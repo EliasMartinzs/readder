@@ -1,42 +1,53 @@
 "use client";
-import React, { useState } from "react";
-import { BsSearch } from "react-icons/bs";
+
+import { cn } from "@/lib/utils";
+import { KeyboardEvent, useState } from "react";
 import { Input } from "../ui/input";
+import { MdOutlineSearchOff, MdSearch } from "react-icons/md";
+import { Button } from "../ui/button";
+import { useRouter } from "next/navigation";
 
 export function Search() {
-  const [isInputVisible, setInputVisible] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [search, setSearch] = useState<string>("");
+  const router = useRouter();
 
-  const toggleInput = () => {
-    setInputVisible(!isInputVisible);
+  const searchedAnimes = () => {
+    setIsOpen(!isOpen);
+
+    if (search.length >= 1) {
+      router.push(`/searched/${search}`);
+      setSearch("");
+    }
+  };
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      searchedAnimes();
+    }
   };
 
   return (
-    <>
-      <div className="flex items-center max-lg:hidden">
+    <div className="relative">
+      <div className="flex-center gap-x-">
         <div
-          className={`origin-right transition-transform duration-500 ease-in-out ${
-            isInputVisible ? "scale-x-100" : "scale-x-0"
-          }`}
+          className={cn(
+            "transition-all ease-in h-10",
+            isOpen ? "w-64 opacity-100" : "w-0 opacity-0"
+          )}
         >
           <Input
-            type="text"
-            className="h-10 w-96 py-2 px-5 outline-none bg-white bg-opacity-40 rounded-full placeholder:text-black/50"
+            className="bg-transparent outline-none border-b border-slate-300/50 placeholder:text-white"
             placeholder="Search..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value.toLowerCase())}
+            onKeyDown={handleKeyDown}
           />
         </div>
-        <button onClick={toggleInput} className="p-2">
-          <BsSearch className="h-6 w-6" />
-        </button>
+        <Button className="p-0 absolute right-0" onClick={searchedAnimes}>
+          <MdSearch className="w-7 h-7" />
+        </Button>
       </div>
-
-      <div className="lg:hidden flex items-center justify-start gap-x-3 w-full">
-        <Input
-          type="text"
-          className="w-full rounded-md form-1"
-          placeholder="Search..."
-        />
-        <BsSearch className="h-6 w-6" />
-      </div>
-    </>
+    </div>
   );
 }
