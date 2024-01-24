@@ -1,3 +1,4 @@
+import { Anime } from "@/types";
 import React, { Suspense } from "react";
 import {
   QueryObserverResult,
@@ -11,9 +12,7 @@ interface ISwiperWrapper {
   children?: React.ReactNode;
   error?: Error | null;
   isLoading?: boolean;
-  refetch?: <TPageData>(
-    options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined
-  ) => Promise<QueryObserverResult<unknown, unknown>>;
+  refetch?: any;
 }
 
 export function SwiperWrapper({
@@ -29,16 +28,16 @@ export function SwiperWrapper({
       <div className="">
         <h2 className="text-2xl lg:text-3xl font-semibold italic">{title}</h2>
       </div>
-      {/* {error ? (
+      {error ? (
         <>
           <h3>Somethin went wrong!</h3>
           <button onClick={() => refetch()}>Try again</button>
         </>
       ) : isLoading ? (
         skeleton
-      ) : ( */}
-      {children}
-      {/* )} */}
+      ) : (
+        children
+      )}
     </Suspense>
   );
 }

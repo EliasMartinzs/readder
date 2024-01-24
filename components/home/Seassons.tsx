@@ -1,29 +1,23 @@
 "use client";
 
 import React, { useState } from "react";
-import { UseQueryResult } from "react-query";
 import Image from "next/image";
 import { Skeleton } from "../ui/skeleton";
 import { Button } from "../ui/button";
 import { Anime } from "@/types";
 
-interface IWinter {
-  // query: UseQueryResult<Anime[], Error>;
+interface ISeassons {
   query: any;
   title: string;
 }
 
-export function Seassons({ query, title }: IWinter) {
-  // const { data, error, isLoading, refetch } = query;
+export function Seassons({ query, title }: ISeassons) {
+  const { data, error, isLoading, refetch } = query;
   const [more, setMore] = useState(10);
 
   const showMore = () => {
     setMore((prev) => prev + 10);
   };
-
-  const isLoading = false;
-  const error = false;
-  const data = query;
 
   return (
     <div>
@@ -52,7 +46,7 @@ export function Seassons({ query, title }: IWinter) {
                 {data !== undefined &&
                   data.slice(0, more).map((anime: Anime, i: number) => (
                     <div
-                      className="mt-5 flex items-start justify-center gap-3"
+                      className="mt-5 flex items-start justify-start gap-3"
                       key={anime.title + i}
                     >
                       <Image

@@ -22,16 +22,33 @@
 //   },
 // };
 
+// const options = {
+//   method: "GET",
+//   headers: {
+//     "X-RapidAPI-Key": "a5a32f6f2fmshefc54297f375ed8p1c83b2jsnaa1c3d3f131f",
+//     "X-RapidAPI-Host": "myanimelist.p.rapidapi.com",
+//   },
+// };
+
+// const options = {
+//   method: "GET",
+//   headers: {
+//     "X-RapidAPI-Key": "b2a34291a2mshb5605fd5a4cabcdp19c4ccjsnc98a00a3e544",
+//     "X-RapidAPI-Host": "myanimelist.p.rapidapi.com",
+//   },
+// };
+
 const options = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": "a5a32f6f2fmshefc54297f375ed8p1c83b2jsnaa1c3d3f131f",
+    "X-RapidAPI-Key": "aac6c31a8bmsh03fe4517cf9fa2cp12d645jsnf133e012a299",
     "X-RapidAPI-Host": "myanimelist.p.rapidapi.com",
   },
 };
 
 const url = "https://myanimelist.p.rapidapi.com/v2/anime";
 const url2 = "https://myanimelist.p.rapidapi.com/anime/top";
+const urlManga = "https://myanimelist.p.rapidapi.com/manga/top";
 
 export const fetchAnimeSeasonal = async () => {
   const response = await fetch(`${url}/seasonal?year=2024`, options);
@@ -54,7 +71,7 @@ export const fetchTVShows = async () => {
 };
 
 export const fetchRecomendations = async () => {
-  const response = await fetch(`${url}/recommendations?p=1`, options);
+  const response = await fetch(`${url}/recommendations?p=5`, options);
   if (!response.ok) {
     throw new Error("Network response was not ok");
   }
@@ -111,7 +128,7 @@ export const fetchSearch = async (query: string) => {
 
   try {
     const response = await fetch(
-      `https://myanimelist.p.rapidapi.com/v2/anime/search?q=${query}&n=50`,
+      `https://myanimelist.p.rapidapi.com/v2/anime/search?q=${query}&n=20`,
       options
     );
 
@@ -148,6 +165,29 @@ export const fetchAnimeById = async (id: number) => {
     return data;
   } catch (error) {
     console.error("Error in fetchAnimeById:", error);
+    throw error;
+  }
+};
+
+export const fetchManga = async (query: string) => {
+  if (!query || query.length <= 0) {
+    console.error("Invalid ID:", query);
+    throw new Error("Invalid ID");
+  }
+
+  try {
+    const response = await fetch(`${urlManga}/${query}`, options);
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("Error fetching data:", errorText);
+      throw new Error(`Error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error in fetch mangas:", error);
     throw error;
   }
 };

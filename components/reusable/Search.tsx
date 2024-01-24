@@ -8,7 +8,7 @@ import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 
 interface ISearch {
-  setModalIsOpen: (prevState: boolean) => void;
+  setModalIsOpen?: (prevState: boolean) => void;
 }
 
 export function Search({ setModalIsOpen }: ISearch) {
@@ -22,7 +22,7 @@ export function Search({ setModalIsOpen }: ISearch) {
     if (search.length >= 1) {
       router.push(`/searched/${search}`);
       setSearch("");
-      setModalIsOpen(false);
+      setModalIsOpen && setModalIsOpen(false);
     }
   };
 

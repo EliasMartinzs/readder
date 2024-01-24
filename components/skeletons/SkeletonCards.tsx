@@ -8,9 +8,7 @@ export function SkeletonCards() {
         <Skeleton
           key={ske}
           className="min-w-[225px] h-[318px] mt-5 flex-center"
-        >
-          <Loading size="lg" variant="input" />
-        </Skeleton>
+        />
       ))}
     </div>
   );

@@ -54,16 +54,17 @@ export function NavigationMenuLinks() {
                 <ul className="grid gap-3 p-4 md:w-auto lg:w-auto bg-background border border-slate-300/10">
                   <li className="row-span-3">
                     <NavigationMenuLink asChild>
-                      <a className="" href="/">
+                      <div className="flex flex-col">
                         {link.items.map((items) => (
-                          <p
+                          <Link
+                            href={`/mangas/${items.label}`}
                             className="p-2 hover:text-blue-500 hover:underline underline-offset-4 capitalize"
                             key={items.label}
                           >
                             {items.label}
-                          </p>
+                          </Link>
                         ))}
-                      </a>
+                      </div>
                     </NavigationMenuLink>
                   </li>
                 </ul>

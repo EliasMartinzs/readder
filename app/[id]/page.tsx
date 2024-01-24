@@ -2,7 +2,6 @@
 
 import { Separator } from "@/components/ui/separator";
 import { useAnimeById } from "@/hooks/useAnime";
-import { AnimeDetails } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,173 +10,34 @@ import { SwiperImage } from "@/components/reusable/SwiperImage";
 
 import "swiper/css";
 import Loading from "@/components/reusable/Loading";
-
-const animeDetails: AnimeDetails[] = [
-  {
-    title_ov: "Sousou no Frieren",
-    title_en: "Frieren: Beyond Journey's End",
-    synopsis:
-      "During their decade-long quest to defeat the Demon King, the members of the hero's party—Himmel himself, the priest Heiter, the dwarf warrior Eisen, and the elven mage Frieren—forge bonds through adventures and battles, creating unforgettable precious memories for most of them. However, the time that Frieren spends with her comrades is equivalent to merely a fraction of her life, which has lasted over a thousand years. When the party disbands after their victory, Frieren casually returns to her routine of collecting spells across the continent. Due to her different sense of time, she seemingly holds no strong feelings toward the experiences she went through. As the years pass, Frieren gradually realizes how her days in the hero's party truly impacted her. Witnessing the deaths of two of her former companions, Frieren begins to regret having taken their presence for granted; she vows to better understand humans and create real personal connections. Although the story of that once memorable journey has long ended, a new tale is about to begin. [Written by MAL Rewrite]",
-    alternative_titles: {
-      synonyms: "Frieren at the Funeral",
-      japanese: "葬送のフリーレン",
-      english: "Frieren: Beyond Journey's End",
-    },
-    information: {
-      type: [
-        { name: "TV", url: "https://myanimelist.net/topanime.php?type=tv" },
-      ],
-      episodes: "28",
-      status: "Currently Airing",
-      aired: "Sep 29, 2023 to ?",
-      premiered: [
-        {
-          name: "Fall 2023",
-          url: "https://myanimelist.net/anime/season/2023/fall",
-        },
-      ],
-      broadcast: "Fridays at 23:00 (JST)",
-      producers: [
-        {
-          name: "Aniplex",
-          url: "https://myanimelist.net/anime/producer/17/Aniplex",
-        },
-        {
-          name: "Dentsu",
-          url: "https://myanimelist.net/anime/producer/53/Dentsu",
-        },
-        {
-          name: "Shogakukan-Shueisha Productions",
-          url: "https://myanimelist.net/anime/producer/62/Shogakukan-Shueisha_Productions",
-        },
-        {
-          name: "Nippon Television Network",
-          url: "https://myanimelist.net/anime/producer/1003/Nippon_Television_Network",
-        },
-        {
-          name: "TOHO animation",
-          url: "https://myanimelist.net/anime/producer/1143/TOHO_animation",
-        },
-        {
-          name: "Shogakukan",
-          url: "https://myanimelist.net/anime/producer/1430/Shogakukan",
-        },
-      ],
-      licensors: "None",
-      studios: [
-        {
-          name: "Madhouse",
-          url: "https://myanimelist.net/anime/producer/11/Madhouse",
-        },
-      ],
-      source: "Manga",
-      genre: "None",
-      theme: "None",
-      duration: "24 min. per ep.",
-      rating: "PG-13 - Teens 13 or older",
-      genres: [
-        {
-          name: "Adventure",
-          url: "https://myanimelist.net/anime/genre/2/Adventure",
-        },
-        { name: "Drama", url: "https://myanimelist.net/anime/genre/8/Drama" },
-        {
-          name: "Fantasy",
-          url: "https://myanimelist.net/anime/genre/10/Fantasy",
-        },
-      ],
-      demographic: [
-        {
-          name: "Shounen",
-          url: "https://myanimelist.net/anime/genre/27/Shounen",
-        },
-      ],
-    },
-    statistics: {
-      score: 9.13,
-      ranked: 1,
-      popularity: 450,
-      members: 485519,
-      favorites: 15175,
-    },
-    characters: [
-      {
-        name: "Frieren",
-        picture_url:
-          "https://cdn.myanimelist.net/images/characters/7/525105.jpg",
-        myanimelist_url: "https://myanimelist.net/character/184947/Frieren",
-        voice_actor_name: "Tanezaki, Atsumi",
-        voice_actor_picture_url:
-          "https://cdn.myanimelist.net/images/voiceactors/3/77190.jpg",
-        voice_actor_myanimelist_url:
-          "https://myanimelist.net/people/17215/Atsumi_Tanezaki",
-      },
-      {
-        name: "Fern",
-        picture_url:
-          "https://cdn.myanimelist.net/images/characters/13/519083.jpg",
-        myanimelist_url: "https://myanimelist.net/character/188176/Fern",
-        voice_actor_name: "Ichinose, Kana",
-        voice_actor_picture_url:
-          "https://cdn.myanimelist.net/images/voiceactors/3/70398.jpg",
-        voice_actor_myanimelist_url:
-          "https://myanimelist.net/people/47097/Kana_Ichinose",
-      },
-      {
-        name: "Fern",
-        picture_url:
-          "https://cdn.myanimelist.net/images/characters/13/519083.jpg",
-        myanimelist_url: "https://myanimelist.net/character/188176/Fern",
-        voice_actor_name: "Ichinose, Kana",
-        voice_actor_picture_url:
-          "https://cdn.myanimelist.net/images/voiceactors/3/70398.jpg",
-        voice_actor_myanimelist_url:
-          "https://myanimelist.net/people/47097/Kana_Ichinose",
-      },
-      {
-        name: "Fern",
-        picture_url:
-          "https://cdn.myanimelist.net/images/characters/13/519083.jpg",
-        myanimelist_url: "https://myanimelist.net/character/188176/Fern",
-        voice_actor_name: "Ichinose, Kana",
-        voice_actor_picture_url:
-          "https://cdn.myanimelist.net/images/voiceactors/3/70398.jpg",
-        voice_actor_myanimelist_url:
-          "https://myanimelist.net/people/47097/Kana_Ichinose",
-      },
-      {
-        name: "Fern",
-        picture_url:
-          "https://cdn.myanimelist.net/images/characters/13/519083.jpg",
-        myanimelist_url: "https://myanimelist.net/character/188176/Fern",
-        voice_actor_name: "Ichinose, Kana",
-        voice_actor_picture_url:
-          "https://cdn.myanimelist.net/images/voiceactors/3/70398.jpg",
-        voice_actor_myanimelist_url:
-          "https://myanimelist.net/people/47097/Kana_Ichinose",
-      },
-      {
-        name: "Fern",
-        picture_url:
-          "https://cdn.myanimelist.net/images/characters/13/519083.jpg",
-        myanimelist_url: "https://myanimelist.net/character/188176/Fern",
-        voice_actor_name: "Ichinose, Kana",
-        voice_actor_picture_url:
-          "https://cdn.myanimelist.net/images/voiceactors/3/70398.jpg",
-        voice_actor_myanimelist_url:
-          "https://myanimelist.net/people/47097/Kana_Ichinose",
-      },
-    ],
-    picture_url: "https://cdn.myanimelist.net/images/anime/1015/138006.jpg",
-  },
-];
+import { Button } from "@/components/ui/button";
 
 export default function Anime({ params }: { params: { id: number } }) {
-  const { data: anime, isLoading, isError, error } = useAnimeById(params.id);
+  const { data: anime, isLoading, error, refetch } = useAnimeById(params.id);
+
+  if (error)
+    return (
+      <div className="w-full h-screen flex-center flex-col gap-y-2">
+        <Image
+          src="/wrong.png"
+          width={300}
+          height={300}
+          alt="something went wrong"
+        />
+        <h2 className="text-2xl">Something went wrong</h2>
+        <Button
+          variant="default"
+          className="bg-blue-500"
+          onClick={() => refetch}
+        >
+          Try again
+        </Button>
+      </div>
+    );
 
   if (isLoading)
     return (
-      <div className="w-full h-screen grid place-items-center">
+      <div className="w-full h-screen flex-center">
         <Loading size="md" variant="input" />
       </div>
     );
@@ -211,32 +71,32 @@ export default function Anime({ params }: { params: { id: number } }) {
               <div>
                 <span className="flex gap-x-3 items-center justify-between w-40 ">
                   <span className="font-semibold">Ranked:</span>{" "}
-                  {anime?.statistics.ranked}
+                  {anime?.statistics?.ranked}
                 </span>
                 <span className="flex gap-x-3 items-center justify-between w-40 lg:w-96">
                   <span className="font-semibold">Score:</span>{" "}
-                  {anime?.statistics.score}
+                  {anime?.statistics?.score}
                 </span>
                 <span
                   className="flex gap-x-3 items-center justify-between w-40 lg:w-96
                   "
                 >
                   <span className="font-semibold">Favories:</span>{" "}
-                  {anime?.statistics.favorites}
+                  {anime?.statistics?.favorites}
                 </span>
                 <span
                   className="flex gap-x-3 items-center justify-between w-40 lg:w-96
                   "
                 >
                   <span className="font-semibold">Popularity:</span>{" "}
-                  {anime?.statistics.popularity}
+                  {anime?.statistics?.popularity}
                 </span>
                 <span
                   className="flex gap-x-3 items-center justify-between w-40 lg:w-96
                   "
                 >
                   <span className="font-semibold"> Members:</span>{" "}
-                  {anime?.statistics.members}
+                  {anime?.statistics?.members}
                 </span>
               </div>
 
@@ -256,22 +116,23 @@ export default function Anime({ params }: { params: { id: number } }) {
                 <div className="flex-between w-full border-b border-slate-300/20">
                   <h5 className="font-semibold">Episodes</h5>
                   <div className="flex">
-                    <p>{anime?.information.episodes} ep </p> /
-                    <p> {anime?.information.duration}</p>
+                    <p>{anime?.information?.episodes} ep </p> /
+                    <p> {anime?.information?.duration}</p>
                   </div>
                 </div>
                 <div className="flex-between w-full  border-b border-slate-300/20">
                   <h5 className="font-semibold">Status</h5>
-                  <p>{anime?.information.status}</p>
+                  <p>{anime?.information?.status}</p>
                 </div>
                 <div className="flex-between w-full  border-b border-slate-300/20">
                   <h5 className="font-semibold">Aired</h5>
-                  <p>{anime?.information.aired}</p>
+                  <p>{anime?.information?.aired}</p>
                 </div>
                 <div className="flex-between w-full  border-b border-slate-300/20">
                   <h5 className="font-semibold">Premiered</h5>
                   {anime !== undefined &&
-                    anime?.information.premiered.map((premiere) => (
+                    Array.isArray(anime?.information?.premiered) &&
+                    anime?.information?.premiered?.map((premiere) => (
                       <Link href={premiere.url} key={premiere.name}>
                         {premiere.name}
                       </Link>
@@ -281,7 +142,8 @@ export default function Anime({ params }: { params: { id: number } }) {
                   <h5 className="font-semibold">Producers</h5>
                   <div className="flex flex-col items-end justify-center">
                     {anime !== undefined &&
-                      anime?.information.producers.map((producer) => (
+                      Array.isArray(anime?.information?.premiered) &&
+                      anime?.information?.producers?.map((producer) => (
                         <Link key={producer.name} href={producer.url}>
                           {producer.name}
                         </Link>
@@ -292,7 +154,8 @@ export default function Anime({ params }: { params: { id: number } }) {
                   <h5 className="font-semibold">Studios</h5>
                   <div className="flex flex-col items-end justify-center">
                     {anime !== undefined &&
-                      anime?.information.studios.map((studio) => (
+                      Array.isArray(anime?.information?.premiered) &&
+                      anime?.information?.studios?.map((studio) => (
                         <Link key={studio.name} href={studio.url}>
                           {studio.name}
                         </Link>
@@ -302,8 +165,9 @@ export default function Anime({ params }: { params: { id: number } }) {
                 <div className="flex justify-between items-start w-full  border-b border-slate-300/20">
                   <h5 className="font-semibold">Genres</h5>
                   <div className="flex flex-col items-end justify-center">
-                    {Array.isArray(anime?.information?.genres) &&
-                      anime?.information.genres.map((genre) => (
+                    {anime !== undefined &&
+                      Array.isArray(anime?.information?.premiered) &&
+                      anime?.information?.genres?.map((genre) => (
                         <Link key={genre.name} href={genre.url}>
                           {genre.name}
                         </Link>
@@ -314,7 +178,8 @@ export default function Anime({ params }: { params: { id: number } }) {
                   <h5 className="font-semibold">Demographic</h5>
                   <div className="flex flex-col items-end justify-center">
                     {anime !== undefined &&
-                      anime?.information.demographic.map((demo) => (
+                      Array.isArray(anime?.information?.premiered) &&
+                      anime?.information?.demographic?.map((demo) => (
                         <Link key={demo.name} href={demo.url}>
                           {demo.name}
                         </Link>
@@ -349,7 +214,7 @@ export default function Anime({ params }: { params: { id: number } }) {
                   }}
                 >
                   {anime !== undefined &&
-                    anime?.characters.map((character) => (
+                    anime?.characters?.map((character) => (
                       <SwiperSlide
                         key={character.name}
                         className="w-[225px] h-auto relative"

@@ -2,6 +2,7 @@ import {
   fetchAnimeById,
   fetchAnimeSeasonal,
   fetchAnimes,
+  fetchManga,
   fetchMovies,
   fetchRecomendations,
   fetchSearch,
@@ -14,6 +15,7 @@ import {
   AnimeMovies,
   AnimeRecommendation,
   AnimeSearch,
+  Mangas,
 } from "@/types";
 import { UseQueryResult, useQuery } from "react-query";
 
@@ -81,5 +83,12 @@ export const useAnimeById = (
       console.error("Error in useAnimeById:", error);
     },
     enabled: !!id,
+  });
+};
+
+export const getManga = (query: string): UseQueryResult<Mangas[], Error> => {
+  return useQuery(["manga", query], () => fetchManga(query), {
+    staleTime: 60 * 60 * 1000,
+    cacheTime: 60 * 60 * 1000,
   });
 };

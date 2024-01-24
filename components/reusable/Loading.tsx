@@ -33,11 +33,7 @@ export interface LoadingProps
 const Loading = React.forwardRef<HTMLDivElement, LoadingProps>(
   ({ className, variant, size, ...props }, ref) => {
     return (
-      <div
-        ref={ref}
-        {...props}
-        className="w-full h-screen flex-center overflow-hidden"
-      >
+      <div ref={ref} {...props} className="w-full flex-center overflow-hidden">
         <svg
           aria-hidden="true"
           className={cn(loadingVariants({ variant, size, className }))}
