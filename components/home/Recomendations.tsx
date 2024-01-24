@@ -7,6 +7,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { breakpoint } from "@/constants";
 import { SwiperImage } from "../reusable/SwiperImage";
 import Link from "next/link";
+import { useState } from "react";
+import { IFavoriteAnime } from "@/types";
+import { favoriteAnime } from "@/actions/favorite";
+import { Button } from "../ui/button";
+import { MdFavorite } from "react-icons/md";
 
 const animeRecommendations = [
   {
@@ -32,8 +37,32 @@ const animeRecommendations = [
   },
 ];
 
-export function Recomendations() {
+interface IRecomendations {
+  id: string | undefined;
+}
+
+export function Recomendations({ id }: IRecomendations) {
   const { data, error, isLoading, refetch } = useQuery("");
+
+  const [favorited, setFavorited] = useState(false);
+
+  const toggleFavorite = async ({
+    image,
+    title,
+    user,
+    description,
+  }: IFavoriteAnime) => {
+    setFavorited(!favorited);
+
+    const newFavorite = {
+      image,
+      title,
+      user,
+      description,
+    };
+
+    await favoriteAnime(newFavorite);
+  };
 
   return (
     <div>
@@ -63,6 +92,21 @@ export function Recomendations() {
                   >
                     {anime.recommendation.title}
                   </Link>
+                </div>
+
+                <div className="absolute top-2 left-2">
+                  <Button
+                    onClick={() =>
+                      toggleFavorite({
+                        image: anime.recommendation.myanimelist_url,
+                        title: anime.recommendation.title,
+                        user: id ?? "",
+                        description: anime.recommendation.description,
+                      })
+                    }
+                  >
+                    <MdFavorite />
+                  </Button>
                 </div>
               </SwiperSlide>
             ))}

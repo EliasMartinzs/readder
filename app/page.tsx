@@ -17,7 +17,7 @@ export default async function Home() {
       <Hero />
       <div className="pl-2 lg:pl-20 space-y-10 lg:space-y-16">
         <NewRelease />
-        <Recomendations />
+        <Recomendations id={user?.id} />
         <Movies />
       </div>
       <Antecipated />

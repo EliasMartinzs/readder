@@ -1,4 +1,5 @@
 import {
+  fetchAnimeById,
   fetchAnimeSeasonal,
   fetchAnimes,
   fetchMovies,
@@ -7,7 +8,13 @@ import {
   fetchSeasonal,
   fetchTVShows,
 } from "@/fetch";
-import { Anime, AnimeMovies, AnimeRecommendation, AnimeSearch } from "@/types";
+import {
+  Anime,
+  AnimeDetails,
+  AnimeMovies,
+  AnimeRecommendation,
+  AnimeSearch,
+} from "@/types";
 import { UseQueryResult, useQuery } from "react-query";
 
 export const useAnimeSeasonal = () => {
@@ -39,13 +46,19 @@ export const useMovies = (): UseQueryResult<AnimeMovies[], Error> => {
 };
 
 export const useSeasonal = (query: string): UseQueryResult<Anime[], Error> => {
-  return useQuery(["animeSeasonData", query], () => fetchSeasonal(query));
+  return useQuery(["animeSeasonData", query], () => fetchSeasonal(query), {
+    staleTime: 60 * 60 * 1000,
+    cacheTime: 60 * 60 * 1000,
+  });
 };
 
 export const getAnimes = (
   query: string
 ): UseQueryResult<AnimeMovies[], Error> => {
-  return useQuery(["getAnimes", query], () => fetchAnimes(query));
+  return useQuery(["getAnimes", query], () => fetchAnimes(query), {
+    staleTime: 60 * 60 * 1000,
+    cacheTime: 60 * 60 * 1000,
+  });
 };
 
 export const useSearchAnimes = (
@@ -53,5 +66,20 @@ export const useSearchAnimes = (
 ): UseQueryResult<AnimeSearch[], Error> => {
   return useQuery(["searchAnimes", query], () => fetchSearch(query), {
     enabled: !!query,
+    staleTime: 60 * 60 * 1000,
+    cacheTime: 60 * 60 * 1000,
+  });
+};
+
+export const useAnimeById = (
+  id: number
+): UseQueryResult<AnimeDetails, Error> => {
+  return useQuery(["anime", id], () => fetchAnimeById(id), {
+    staleTime: 60 * 60 * 1000,
+    cacheTime: 60 * 60 * 1000,
+    onError: (error) => {
+      console.error("Error in useAnimeById:", error);
+    },
+    enabled: !!id,
   });
 };

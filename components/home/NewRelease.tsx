@@ -14,7 +14,7 @@ import { useTVShows } from "@/hooks/useAnime";
 import { breakpoint } from "@/constants";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { AnimeRecommendation } from "@/types";
+import { AnimeRecommendation, IFavoriteAnime } from "@/types";
 import { favoriteAnime } from "@/actions/favorite";
 
 const useTvShowsFetch = [
@@ -85,9 +85,9 @@ export function NewRelease() {
                   <small>{anime.episodes} episodes</small>
                   <small className="line-clamp-6">{anime.synopsis}</small>
 
-                  <div className="absolute bottom-0 left-0 p-[10px] text-lg">
-                    <MdFavorite className="hover:text-red-500 cursor-pointer" />
-                  </div>
+                  <button className="absolute bottom-0 left-0 p-[10px] text-lg">
+                    <MdFavorite />
+                  </button>
                 </div>
 
                 <div className="flex flex-col">

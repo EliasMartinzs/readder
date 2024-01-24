@@ -56,7 +56,7 @@ export function Menu() {
                 </div>
               )}
             </>
-            <Search />
+            <Search setModalIsOpen={setIsOpen} />
             <MenuLinks setIsOpen={setIsOpen} />
             {name && <Logout />}
           </div>

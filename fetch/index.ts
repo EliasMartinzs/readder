@@ -14,10 +14,18 @@
 //   },
 // };
 
+// const options = {
+//   method: "GET",
+//   headers: {
+//     "X-RapidAPI-Key": "ee3521f564msh6202e5fc5df0354p1b3741jsnca3874db850a",
+//     "X-RapidAPI-Host": "myanimelist.p.rapidapi.com",
+//   },
+// };
+
 const options = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": "ee3521f564msh6202e5fc5df0354p1b3741jsnca3874db850a",
+    "X-RapidAPI-Key": "a5a32f6f2fmshefc54297f375ed8p1c83b2jsnaa1c3d3f131f",
     "X-RapidAPI-Host": "myanimelist.p.rapidapi.com",
   },
 };
@@ -114,6 +122,32 @@ export const fetchSearch = async (query: string) => {
     return await response.json();
   } catch (error) {
     console.error("Error fetching data: ", error);
+    throw error;
+  }
+};
+
+export const fetchAnimeById = async (id: number) => {
+  if (!id || id <= 0) {
+    console.error("Invalid ID:", id);
+    throw new Error("Invalid ID");
+  }
+
+  try {
+    const response = await fetch(
+      `https://myanimelist.p.rapidapi.com/anime/${id}`,
+      options
+    );
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("Error fetching data:", errorText);
+      throw new Error(`Error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error in fetchAnimeById:", error);
     throw error;
   }
 };

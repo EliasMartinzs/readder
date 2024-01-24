@@ -1,31 +1,19 @@
 "use server";
 
 import { db } from "@/lib/db";
-
-interface IFavoriteAnime {
-  uid: number;
-  title: string;
-  image: string;
-  description?: string;
-  user: string;
-}
+import { IFavoriteAnime } from "@/types";
 
 export const favoriteAnime = async ({
   image,
   title,
-  uid,
   user,
   description,
 }: IFavoriteAnime) => {
   try {
     const existingFavorite = await db.favorite.findFirst({
       where: {
-        AND: {
-          uid: uid,
-          user: {
-            id: user,
-          },
-        },
+        userId: user,
+        title: title,
       },
     });
 
@@ -35,8 +23,8 @@ export const favoriteAnime = async ({
       data: {
         image: image,
         title: title,
-        uid: uid,
         description: description,
+        isFavorited: true,
         user: {
           connect: { id: user },
         },
