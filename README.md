@@ -22,6 +22,13 @@ Para garantir uma experiência de desenvolvimento fluida e acessível, as variá
 - **Autenticação de Usuário com NextAuth**: Garantindo um processo de login seguro.
 - **Exploração de Animes e Mangás**: Acesso a informações detalhadas sobre animes e mangás.
 
+## API
+
+- **MyAnimeList [https://rapidapi.com/felixeschmittfes/api/myanimelist].
+
+## Projeto hospedado
+- [https://readder.vercel.app/]
+
 ## Tecnologias Utilizadas
 
 Este projeto foi construído utilizando as seguintes tecnologias e bibliotecas:
