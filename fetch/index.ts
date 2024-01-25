@@ -1,47 +1,7 @@
-// const options = {
-//   method: "GET",
-//   headers: {
-//     "X-RapidAPI-Key": "488fbc12c0msh86d32a72473524dp117130jsnd5dc39ebcc7f",
-//     "X-RapidAPI-Host": "myanimelist.p.rapidapi.com",
-//   },
-// };
-
-// const options = {
-//   method: "GET",
-//   headers: {
-//     "X-RapidAPI-Key": "0c6ed00467msh048b286376d4202p1eed16jsnc9846997a5b5",
-//     "X-RapidAPI-Host": "myanimelist.p.rapidapi.com",
-//   },
-// };
-
-// const options = {
-//   method: "GET",
-//   headers: {
-//     "X-RapidAPI-Key": "ee3521f564msh6202e5fc5df0354p1b3741jsnca3874db850a",
-//     "X-RapidAPI-Host": "myanimelist.p.rapidapi.com",
-//   },
-// };
-
-// const options = {
-//   method: "GET",
-//   headers: {
-//     "X-RapidAPI-Key": "a5a32f6f2fmshefc54297f375ed8p1c83b2jsnaa1c3d3f131f",
-//     "X-RapidAPI-Host": "myanimelist.p.rapidapi.com",
-//   },
-// };
-
-// const options = {
-//   method: "GET",
-//   headers: {
-//     "X-RapidAPI-Key": "b2a34291a2mshb5605fd5a4cabcdp19c4ccjsnc98a00a3e544",
-//     "X-RapidAPI-Host": "myanimelist.p.rapidapi.com",
-//   },
-// };
-
 const options = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": "aac6c31a8bmsh03fe4517cf9fa2cp12d645jsnf133e012a299",
+    "X-RapidAPI-Key": "f89215d985msh0d2201ee70de0b9p1d1f9bjsne88d0f92a600",
     "X-RapidAPI-Host": "myanimelist.p.rapidapi.com",
   },
 };
