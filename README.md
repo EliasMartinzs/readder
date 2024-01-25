@@ -24,10 +24,10 @@ Para garantir uma experiência de desenvolvimento fluida e acessível, as variá
 
 ## API
 
-- **MyAnimeList [https://rapidapi.com/felixeschmittfes/api/myanimelist].
+- **MyAnimeList** https://rapidapi.com/felixeschmittfes/api/myanimelist.
 
 ## Projeto hospedado
-- [https://readder.vercel.app/]
+- https://readder.vercel.app/
 
 ## Tecnologias Utilizadas
 
