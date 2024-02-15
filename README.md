@@ -11,7 +11,7 @@
 
 ## Sobre o Projeto
 
-Este projeto é um site para fãs de animes e mangás, desenvolvido com o objetivo de aprender sobre TransStack Query e Fetch API. A plataforma oferece uma experiência interativa e informativa para os usuários explorarem uma ampla gama de animes e mangás.
+Este projeto é um site para fãs de animes e mangás, desenvolvido com o objetivo de aprender sobre TansStack Query e Fetch API. A plataforma oferece uma experiência interativa e informativa para os usuários explorarem uma ampla gama de animes e mangás.
 
 Este projeto foi concebido com um design minimalista e focado principalmente no teste e exploração do TanStack Query. Uma característica importante a se destacar é a limitação imposta pela API gratuita utilizada. Devido a essa restrição, pode ocorrer que, ao acessar o projeto online, nenhum dado seja exibido, indicando que o limite de requisições mensais já foi atingido.
 
